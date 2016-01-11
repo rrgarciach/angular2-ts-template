@@ -1,0 +1,8 @@
+node_modules/
+build/
+dist/
+maps/
+.idea/
+.editorconfig
+*.iml
+src/app/config/local.env.ts

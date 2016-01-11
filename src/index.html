@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>Angular2 with tests</title>
+    <script src="lib/traceur-runtime.js"></script>
+    <script src="lib/angular2/angular2-polyfills.js"></script>
+    <script src="lib/system.js"></script>
+    <script src="lib/rjxs/Rx.js"></script>
+    <script src="lib/angular2/angular2.dev.js"></script>
+    <script src="lib/angular2/http.js"></script>
+    <script src="lib/angular2/router.js"></script>
+    <base href="/">
+    <script>
+        System.config({
+            packages: {
+                app: {
+                    format: 'cjs',
+                    defaultExtension: 'js'
+                }
+            }
+        });
+        System.import('app/bootstrap')
+                .then(null, console.error.bind(console));
+    </script>
+</head>
+    <body>
+        <app></app>
+    </body>
+</html>
