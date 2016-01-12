@@ -1,14 +1,17 @@
 /// <reference path="../services/api.service.ts" />
+/// <reference path="./task.model.ts" />
 
 import {Inject, provide} from 'angular2/core';
 import {Headers} from 'angular2/http';
-import {APIService} from '../services/api.service';
 import {Observable} from 'rxjs/Rx';
+
+import {APIService} from '../services/api.service';
+import {TaskModel} from './task.model'
 
 export class TaskService {
     private apiService:APIService;
     private urlPaths:Object = {
-        '/task/1': '/56944942110000d61083a729',
+        '/task/1': '/56954bda130000e909f9e2bc',
         '/task': '/56944a961100001b1183a72b',
     };
     public tasks:Object[] = [];
@@ -22,7 +25,7 @@ export class TaskService {
         authHeader.append('Authorization', 'Bearer yourTokenGoesHere');
 
         return Observable.create(observer => {
-            this.apiService.get(this.urlPaths['/task/1'] + id,
+            this.apiService.get(this.urlPaths['/task/1'] + '/' + id,
                 {headers: authHeader})
                 .map(res => res.json())
                 .subscribe(task => {
@@ -39,6 +42,7 @@ export class TaskService {
                 observer.complete();
             });
         }
+
         let authHeader = new Headers();
         authHeader.append('Authorization', 'Bearer yourTokenGoesHere');
 
@@ -54,7 +58,7 @@ export class TaskService {
         });
     }
 
-    public createTask(task:Object):Observable<any> {
+    public createTask(task:TaskModel):Observable<any> {
         let authHeader = new Headers();
         authHeader.append('Authorization', 'Bearer yourTokenGoesHere');
 
@@ -64,6 +68,7 @@ export class TaskService {
                 {headers: authHeader})
                 .map(res => res.json())
                 .subscribe(() => {
+                    task.id = this.tasks.length + 1;
                     this.tasks.push(task);
                     observer.next(task);
                     observer.complete();

@@ -1,11 +1,13 @@
 /// <reference path="../../../config/paths.ts" />
 /// <reference path="../task.service.ts" />
+/// <reference path="../task.model.ts" />
 
 import {Inject, Component, View} from 'angular2/core';
 import {ROUTER_DIRECTIVES, Router, Location} from 'angular2/router';
 import {PATHS} from '../../../config/paths';
 
 import {TaskService} from '../task.service';
+import {TaskModel} from '../task.model';
 
 @Component({
     selector: 'task-create'
@@ -18,9 +20,7 @@ import {TaskService} from '../task.service';
 export class TaskCreate {
     private taskService: TaskService;
     public router: Router;
-    public task:Object = {
-        name: ''
-    };
+    public task:TaskModel= new TaskModel();
 
     constructor(@Inject(TaskService) taskService:TaskService,
                 @Inject(Router) router:Router) {

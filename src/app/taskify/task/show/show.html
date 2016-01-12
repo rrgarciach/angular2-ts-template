@@ -1,2 +1,6 @@
-<h1>Task</h1>
-<router-outlet></router-outlet>
+<h1>Task:</h1>
+
+<p>Id: {{task.id}}</p>
+<p>Name: {{task.name}}</p>
+
+<button [routerLink]="['TaskIndex']">Back</button>

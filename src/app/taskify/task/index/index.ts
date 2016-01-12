@@ -20,7 +20,9 @@ export class TaskIndex {
     public tasks:Object[] = [];
 
     constructor(@Inject(TaskService) taskService:TaskService) {
-        taskService.getTasks()
+        this.taskService = taskService;
+
+        this.taskService.getTasks()
             .subscribe(result => {
                 this.tasks = result;
             })
