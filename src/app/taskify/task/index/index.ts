@@ -14,4 +14,13 @@ import {TaskService} from '../task.service';
 })
 
 export class TaskIndex {
+    private taskService: TaskService;
+    public task:Object = {};
+
+    constructor(@Inject(TaskService) taskService:TaskService) {
+        taskService.getTasks()
+        .subscribe(result => {
+                this.task = result;
+            })
+    }
 }
