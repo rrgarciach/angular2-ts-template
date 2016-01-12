@@ -2,25 +2,27 @@
 /// <reference path="../task.service.ts" />
 
 import {Inject, Component, View} from 'angular2/core';
+import {RouteConfig, RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
 import {PATHS} from '../../../config/paths';
 
 import {TaskService} from '../task.service';
 
 @Component({
-    selector: 'task-view'
+    selector: 'task-index'
 })
 @View({
     templateUrl: PATHS.taskifyPath + '/task/index/index.html',
+    directives: ROUTER_DIRECTIVES
 })
 
 export class TaskIndex {
     private taskService: TaskService;
-    public task:Object = {};
+    public tasks:Object[] = [];
 
     constructor(@Inject(TaskService) taskService:TaskService) {
         taskService.getTasks()
-        .subscribe(result => {
-                this.task = result;
+            .subscribe(result => {
+                this.tasks = result;
             })
     }
 }

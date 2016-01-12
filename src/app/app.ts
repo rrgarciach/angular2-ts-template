@@ -1,5 +1,5 @@
 /// <reference path="./config/paths.ts" />
-/// <reference path="./taskify/routes" />
+/// <reference path="./taskify/routes.ts" />
 
 import {Component, View, Inject} from 'angular2/core';
 import {RouteConfig, RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';

@@ -15,5 +15,6 @@ bootstrap(App,  [
     ROUTER_BINDINGS,
     HTTP_PROVIDERS,
     API_SERVICE_PROVIDER,
-    TASK_SERVICE_PROVIDER
+    TASK_SERVICE_PROVIDER,
+    bind(APP_BASE_HREF).toValue(location.pathname)
 ]);

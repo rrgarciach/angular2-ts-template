@@ -1,1 +1,8 @@
 <h1>Tasks List</h1>
+<ul>
+    <li *ngFor="#task of tasks">
+        <input id="task{{task.id}}" type="checkbox"/>
+        <label htmlFor="task{{task.id}}">{{task.name}}</label>
+    </li>
+</ul>
+<button [routerLink]="['TaskCreate']">New Task</button>

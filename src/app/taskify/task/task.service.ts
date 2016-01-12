@@ -11,6 +11,7 @@ export class TaskService {
         '/task/1': '/56944942110000d61083a729',
         '/task': '/56944a961100001b1183a72b',
     };
+    public tasks:Object[] = [];
 
     constructor(@Inject(APIService) apiService:APIService) {
         this.apiService = apiService;
@@ -32,6 +33,12 @@ export class TaskService {
     }
 
     public getTasks():Observable<any> {
+        if (this.tasks.length > 0) {
+            return Observable.create(observer => {
+                observer.next(this.tasks);
+                observer.complete();
+            });
+        }
         let authHeader = new Headers();
         authHeader.append('Authorization', 'Bearer yourTokenGoesHere');
 
@@ -40,7 +47,25 @@ export class TaskService {
                 {headers: authHeader})
                 .map(res => res.json())
                 .subscribe(tasks => {
-                    observer.next(tasks);
+                    this.tasks = tasks;
+                    observer.next(this.tasks);
+                    observer.complete();
+                });
+        });
+    }
+
+    public createTask(task:Object):Observable<any> {
+        let authHeader = new Headers();
+        authHeader.append('Authorization', 'Bearer yourTokenGoesHere');
+
+        return Observable.create(observer => {
+            this.apiService.post(this.urlPaths['/task'],
+                task,
+                {headers: authHeader})
+                .map(res => res.json())
+                .subscribe(() => {
+                    this.tasks.push(task);
+                    observer.next(task);
                     observer.complete();
                 });
         });
