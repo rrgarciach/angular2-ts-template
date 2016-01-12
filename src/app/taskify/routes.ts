@@ -9,8 +9,7 @@ import {TaskCreate} from './task/create/create';
 import {TaskUpdate} from './task/update/update';
 
 export const ROUTES = [
-  {path: '/', component: TaskIndex, as: 'TaskIndex'}, // Default route
-  {path: '/tasks', component: TaskIndex, as: 'TaskIndex'},
+  {path: '/tasks', useAsDefault: true, component: TaskIndex, as: 'TaskIndex'}, // <--- Default Route
   {path: '/tasks/:id', component: TaskShow, as: 'TaskShow'},
   {path: '/tasks/update/:id', component: TaskUpdate, as: 'TaskUpdate'},
   {path: '/tasks/create', component: TaskCreate, as: 'TaskCreate'},
