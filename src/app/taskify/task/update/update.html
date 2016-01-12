@@ -1,0 +1,7 @@
+<h1>Edit Task</h1>
+<form>
+    <label htmlFor="name">Name</label>
+    <input type="text" name="name" [(ngModel)]="task.name"/>
+    <button (click)="update()">Save</button>
+</form>
+<button [routerLink]="['TaskIndex']">Back</button>

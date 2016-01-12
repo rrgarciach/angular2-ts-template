@@ -25,6 +25,6 @@ export class TaskShow{
         this.taskService.getTask(1)
             .subscribe(result => {
                 this.task = result;
-            })
+            });
     }
 }

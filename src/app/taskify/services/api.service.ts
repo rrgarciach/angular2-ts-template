@@ -20,6 +20,12 @@ export class APIService {
         let _url:string = APIService.URL + url;
         return this.http.post(_url, _data, options);
     }
+
+    public put(url:string, data:Object, options?:RequestOptionsArgs):Observable<any> {
+        let _data:string = JSON.stringify(data);
+        let _url:string = APIService.URL + url;
+        return this.http.put(_url, _data, options);
+    }
 }
 
 export const API_SERVICE_PROVIDER:any[] = [

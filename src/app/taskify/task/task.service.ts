@@ -28,8 +28,8 @@ export class TaskService {
             this.apiService.get(this.urlPaths['/task/1'] + '/' + id,
                 {headers: authHeader})
                 .map(res => res.json())
-                .subscribe(task => {
-                    observer.next(task);
+                .subscribe(() => {
+                    observer.next(this.tasks[id - 1]);
                     observer.complete();
                 });
         });
@@ -70,6 +70,23 @@ export class TaskService {
                 .subscribe(() => {
                     task.id = this.tasks.length + 1;
                     this.tasks.push(task);
+                    observer.next(task);
+                    observer.complete();
+                });
+        });
+    }
+
+    public updateTask(task:TaskModel):Observable<any> {
+        let authHeader = new Headers();
+        authHeader.append('Authorization', 'Bearer yourTokenGoesHere');
+
+        return Observable.create(observer => {
+            this.apiService.put(this.urlPaths['/task'],
+                task,
+                {headers: authHeader})
+                .map(res => res.json())
+                .subscribe(() => {
+                    this.tasks[task.id - 1] = task;
                     observer.next(task);
                     observer.complete();
                 });
