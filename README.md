@@ -1,4 +1,5 @@
 # angular-2-ts
+### WORK IN PROGRESS
 Angular2 beta with TypeScript scaffolding that includes unit tests
 
 > This starter uses [gulp.js](http://gulpjs.com/) for a build workflow.
@@ -22,10 +23,10 @@ To run this starter you have to install:
 To generate the dist folder with all assets:
 * run `$ gulp build`
 
-
 ## Testing
 
 Note: In order to run specs all specs must export a main function and wrap all test cases inside. E.g.:
+
 ```javascript 
  export function main() {
       describe('feature', () => {
