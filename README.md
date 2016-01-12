@@ -21,3 +21,18 @@ To run this starter you have to install:
 ## Production deployment
 To generate the dist folder with all assets:
 * run `$ gulp build`
+
+
+## Testing
+
+Note: In order to run specs all specs must export a main function and wrap all test cases inside. E.g.:
+```javascript 
+ export function main() {
+      describe('feature', () => {
+  
+          it('should be truthy', () => {
+              expect(true).toBe(true);
+          });
+      });
+  }
+ ```
