@@ -1,4 +1,5 @@
 # angular-2-ts
+### WORK IN PROGRESS
 Angular2 beta with TypeScript scaffolding that includes unit tests
 
 > This starter uses [gulp.js](http://gulpjs.com/) for a build workflow.
