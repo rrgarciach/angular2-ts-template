@@ -15,10 +15,12 @@ module.exports = function (config) {
         // list of files / patterns to load in the browser
         files: [
             'node_modules/traceur/bin/traceur-runtime.js',
-            { pattern: 'dist/**/*.js', included: false, serve: true },
-            'node_modules/es6-module-loader/dist/es6-module-loader.js',
+            'node_modules/angular2/bundles/angular2-polyfills.js',
             'node_modules/systemjs/dist/system.js',
+            'node_modules/rxjs/bundles/Rx.js',
             'node_modules/angular2/bundles/angular2.dev.js',
+            { pattern: 'dist/app/**/*.js', included: false, serve: true, watched: false },
+            { pattern: 'dist/app/**/*.spec.js', included: true, serve: true, watched: true },
             'test-main.js'
         ],
 

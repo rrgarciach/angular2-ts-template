@@ -14,11 +14,21 @@ System.baseURL = '/base/';
 // be able for example to import 'test/test_name'
 // instead of 'scripts/build/test_name'
 System.paths = {
-  'test/*': '/base/test/*.js',
-  'dist/*': '/base/dist/*.js',
-  'angular2/*': 'angular2/*',
-  'rx': 'rx'
+  //'app/*': '/base/dist/app/**/*.js',
+  'angular2/*': '/base/dist/lib/angular2/*.js',
+  'rx': '/base/dist/lib/rxjs/*.js'
 };
+
+System.config({
+  packages: {
+    'base/dist/app/*': {
+      format: 'cjs',
+      defaultExtension: 'js'
+    }
+  }
+});
+
+console.log(System.config);
 
 // paths that include spec and ends with .js
 function onlySpecFiles(path) {

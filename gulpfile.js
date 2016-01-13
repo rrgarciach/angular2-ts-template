@@ -151,6 +151,5 @@ gulp.task('clean-test', function () {
 gulp.task('test', function (done) {
   new KarmaServer({
     configFile: __dirname + '/karma.conf.js',
-    singleRun: true
   }, done).start();
 });
