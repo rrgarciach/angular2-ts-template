@@ -15,8 +15,7 @@ module.exports = function(config) {
       'node_modules/reflect-metadata/Reflect.js',
       'node_modules/rxjs/bundles/Rx.js',
       'node_modules/angular2/bundles/angular2.dev.js',
-      'node_modules/angular2/bundles/http.js',
-      'node_modules/angular2/bundles/router.js',
+      'node_modules/angular2/bundles/http.dev.js',
       'node_modules/angular2/bundles/testing.dev.js',
       { pattern: 'dist/app/**/*.js', included: false, serve: true, watched: false },
       { pattern: 'dist/app/**/*.spec.js', included: true, serve: true, watched: true }
