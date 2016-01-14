@@ -146,6 +146,6 @@ gulp.task('clean-test', function () {
 // Run TypeScript tests
 gulp.task('run-test', function (done) {
   new KarmaServer({
-    configFile: __dirname + '/karma.conf.js',
+    configFile: __dirname + '/karma.conf.js'
   }, done).start();
 });

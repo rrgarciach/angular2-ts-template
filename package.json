@@ -23,7 +23,7 @@
     "karma": "^0.13.9",
     "karma-chrome-launcher": "^0.2.0",
     "karma-jasmine": "^0.3.6",
-    "karma-jasmine-html-reporter": "^0.1.8",
+    "karma-spec-reporter": "0.0.23",
     "karma-systemjs": "^0.10.0",
     "merge-stream": "^1.0.0",
     "reflect-metadata": "^0.1.2",

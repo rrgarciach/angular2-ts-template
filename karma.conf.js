@@ -29,7 +29,8 @@ module.exports = function(config) {
     plugins: [
       'karma-jasmine',
       'karma-chrome-launcher',
-      'karma-systemjs'
+      'karma-systemjs',
+      'karma-spec-reporter'
     ],
 
     // list of files to exclude
@@ -40,7 +41,7 @@ module.exports = function(config) {
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
     reporters: [
-      'progress'
+      'spec'
     ],
 
     // web server port
