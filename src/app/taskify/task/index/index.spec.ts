@@ -4,8 +4,8 @@ import {TaskIndex} from './index';
 
 describe('Task index component', () => {
 
-    let index = new TaskIndex(null);
     it('should be true', () => {
+        let index = new TaskIndex(null);
         expect(true).toBe(true);
     });
 });

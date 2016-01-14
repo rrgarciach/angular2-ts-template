@@ -11,13 +11,8 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      //'node_modules/traceur/bin/traceur-runtime.js',
-      //'node_modules/angular2/bundles/angular2-polyfills.js',
-      //'node_modules/systemjs/dist/system.js',
-
       'node_modules/cryptojs/lib/Crypto.js',
       'node_modules/reflect-metadata/Reflect.js',
-
       'node_modules/rxjs/bundles/Rx.js',
       'node_modules/angular2/bundles/angular2.dev.js',
       'node_modules/angular2/bundles/http.js',
@@ -28,37 +23,23 @@ module.exports = function(config) {
 
     systemjs: {
       // Path to your SystemJS configuration file
-      //configFile: 'src/system.conf.js'
-
-      config: {
-        defaultJSExtensions: true,
-        paths: {
-          'es6-module-loader': 'node_modules/es6-module-loader/dist/es6-module-loader.js',
-          'systemjs': 'node_modules/systemjs/dist/system.js',
-          'system-polyfills': 'node_modules/systemjs/dist/system-polyfills.js',
-          'traceur': 'node_modules/traceur/bin/traceur.js',
-          crypto: 'node_modules/cryptojs/lib/Crypto.js'
-        }
-      }
+      configFile: 'src/system.conf.js'
     },
 
     plugins: [
       'karma-jasmine',
       'karma-chrome-launcher',
-      //'karma-jasmine-html-reporter',
       'karma-systemjs'
     ],
 
     // list of files to exclude
     exclude: [
-      //'**/*.css'
     ],
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
     reporters: [
-      //'html',
       'progress'
     ],
 
