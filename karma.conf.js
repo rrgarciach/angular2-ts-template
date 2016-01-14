@@ -30,7 +30,8 @@ module.exports = function(config) {
       'karma-jasmine',
       'karma-chrome-launcher',
       'karma-systemjs',
-      'karma-spec-reporter'
+      'karma-spec-reporter',
+      'karma-coverage'
     ],
 
     // list of files to exclude
@@ -41,8 +42,22 @@ module.exports = function(config) {
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
     reporters: [
-      'spec'
+      'spec',
+      'coverage'
     ],
+
+    preprocessors: {
+      // source files, that you wanna generate coverage for
+      // do not include tests or libraries
+      // (these files will be instrumented by Istanbul)
+      'dist/app/**/*.js': ['coverage']
+    },
+
+    // optionally, configure the reporter
+    coverageReporter: {
+      type : 'html',
+      dir : 'coverage/'
+    },
 
     // web server port
     port: 9876,
