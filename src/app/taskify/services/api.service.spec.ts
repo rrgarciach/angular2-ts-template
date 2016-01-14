@@ -10,6 +10,7 @@ import {APIService} from './api.service';
 describe('Api service', () => {
 
     let apiService:APIService;
+    let http:Http;
 
     beforeEach(() => {
         let injector:Injector = Injector.resolveAndCreate([
@@ -23,7 +24,7 @@ describe('Api service', () => {
             })
         ]);
 
-        let http:Http = injector.get(Http);
+        http = injector.get(Http);
         apiService = new APIService(http);
     });
 
@@ -33,6 +34,12 @@ describe('Api service', () => {
 
     it('should return an observable from get method', () => {
         let url:string = '/';
+        let expectedUrl:string = 'http://www.mocky.io/v2' + url;
+        let expectedOptions:any = undefined;
+
+        spyOn(http, 'get').and.returnValue(new Observable());
+
         expect(apiService.get(url) instanceof Observable).toBeTruthy();
+        expect(http.get).toHaveBeenCalledWith(expectedUrl, expectedOptions);
     });
 });
