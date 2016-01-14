@@ -7,6 +7,9 @@ export class APIService {
     private static URL:string = 'http://www.mocky.io/v2';
 
     constructor(@Inject(Http) http:Http) {
+        if (!http) {
+            throw new Error('APIService: Invalid Http instance.');
+        }
         this.http = http;
     }
 

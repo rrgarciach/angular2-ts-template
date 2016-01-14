@@ -5,6 +5,6 @@ System.config({
         'systemjs': 'node_modules/systemjs/dist/system.js',
         'system-polyfills': 'node_modules/systemjs/dist/system-polyfills.js',
         'traceur': 'node_modules/traceur/bin/traceur.js',
-        crypto: 'node_modules/cryptojs/lib/Crypto.js'
+        'crypto': 'node_modules/cryptojs/lib/Crypto.js'
     }
 });

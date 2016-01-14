@@ -31,13 +31,16 @@ describe('Task index component', () => {
         ]);
 
         taskService = injector.get(TaskService);
+        //taskIndex = new TaskIndex(taskService);
     });
 
     it('should have a TaskService instance', () => {
-        expect(taskService instanceof TaskService).toBe(true);
+        expect(taskService instanceof TaskService).toBeTruthy();
     });
 
     xit('should get tasks list', () => {
+        spyOn(taskService, 'getTasks');
+        expect(taskService.getTasks).toHaveBeenCalled();
     });
 
     xit('should display tasks list', () => {

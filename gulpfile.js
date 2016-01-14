@@ -22,10 +22,10 @@ gulp.task('default', function () {
     'ts',
     'html-css',
     'dependencies',
+    'watch',
     'run-test',
     'serve',
-    'browser',
-    'watch');
+    'browser');
 });
 
 // Main build task
