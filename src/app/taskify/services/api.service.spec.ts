@@ -28,11 +28,11 @@ describe('Api service', () => {
         apiService = new APIService(http);
     });
 
-    it('should validate http service injected', () => {
+    it('should validate http service injected on error', () => {
         expect(() => new APIService(null)).toThrowError('APIService: Invalid Http instance.');
     });
 
-    it('should return an observable from get method', () => {
+    it('should return an observable and modify api url on get method on success', () => {
         let url:string = '/';
         let expectedUrl:string = 'http://www.mocky.io/v2' + url;
         let expectedOptions:any = undefined;
