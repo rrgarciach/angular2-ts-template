@@ -11,6 +11,10 @@ Angular2 beta with TypeScript scaffolding that includes unit tests.
 * run `$ npm install -g gulp-cli gulp tsc`
 * run `$ npm start`
 
+## Development
+To generate the dist folder and start watch:
+* run `$ gulp`
+
 ## Production deployment
 To generate the dist folder with all assets:
-* run `$ gulp`
+* run `$ gulp dist`
