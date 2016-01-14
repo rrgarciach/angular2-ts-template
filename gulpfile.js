@@ -22,35 +22,31 @@ gulp.task('default', function () {
     'ts',
     'html-css',
     'dependencies',
-    'test',
-    'clean-test',
+    'run-test',
     'serve',
     'browser',
     'watch');
 });
 
 // Main build task
-gulp.task('build', function() {
+gulp.task('dist', function() {
   runSequence(
     'clean',
     'ts-prod',
     'html-css',
     'dependencies',
-    'test',
+    'run-test',
     'clean-test');
 });
 
 // Main task for development stack
-gulp.task('dev', function() {
+gulp.task('test', function() {
   runSequence(
     'clean',
     'ts',
     'html-css',
     'dependencies',
-    'test',
-    'serve',
-    'browser',
-    'watch');
+    'run-test');
 });
 
 // default task starts watcher. in order not to start it each change
@@ -61,7 +57,7 @@ gulp.task('watch-rebuild', function (callback) {
     'ts',
     'html-css',
     'dependencies',
-    'test',
+    'run-test',
     'clean-test');
   callback();
 });
@@ -148,7 +144,7 @@ gulp.task('clean-test', function () {
 });
 
 // Run TypeScript tests
-gulp.task('test', function (done) {
+gulp.task('run-test', function (done) {
   new KarmaServer({
     configFile: __dirname + '/karma.conf.js',
   }, done).start();
