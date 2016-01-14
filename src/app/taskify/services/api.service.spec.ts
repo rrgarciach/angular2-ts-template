@@ -27,6 +27,10 @@ describe('Api service', () => {
         apiService = new APIService(http);
     });
 
+    it('should validate http service injected', () => {
+        expect(() => new APIService(null)).toThrowError('APIService: Invalid Http instance.');
+    });
+
     it('should return an observable from get method', () => {
         let url:string = '/';
         expect(apiService.get(url) instanceof Observable).toBeTruthy();
