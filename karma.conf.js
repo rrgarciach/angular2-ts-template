@@ -22,8 +22,17 @@ module.exports = function(config) {
     ],
 
     systemjs: {
-      // Path to your SystemJS configuration file
-      configFile: 'src/system.conf.js'
+      config: {
+        defaultJSExtensions: true,
+        paths: {
+          'angular2/*': 'node_modules/angular2/bundles/angular2.dev.js',
+          'es6-module-loader': 'node_modules/es6-module-loader/dist/es6-module-loader.js',
+          'systemjs': 'node_modules/systemjs/dist/system.js',
+          'system-polyfills': 'node_modules/systemjs/dist/system-polyfills.js',
+          'traceur': 'node_modules/traceur/bin/traceur.js',
+          'crypto': 'node_modules/cryptojs/lib/Crypto.js'
+        }
+      }
     },
 
     plugins: [
