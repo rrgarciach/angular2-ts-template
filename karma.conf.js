@@ -36,13 +36,6 @@ module.exports = function(config) {
         map: {
           angular2: 'node_modules/angular2/bundles/angular2.dev.js'
         },
-        /*packages: {
-          base: {
-            map: {
-              'angular2': 'node_modules/angular2/bundles/angular2.dev.js'
-            }
-          }
-        },*/
         paths: {
           'es6-module-loader': 'node_modules/es6-module-loader/dist/es6-module-loader.js',
           'systemjs': 'node_modules/systemjs/dist/system.js',
