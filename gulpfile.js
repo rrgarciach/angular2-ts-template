@@ -67,7 +67,7 @@ gulp.task('dependencies', function () {
   var rxjs = gulp.src([
     'node_modules/rxjs/bundles/Rx.js',
   ])
-    .pipe(gulp.dest('dist/lib/rjxs'));
+    .pipe(gulp.dest('dist/lib/rxjs'));
 
   var angular = gulp.src([
     'node_modules/angular2/bundles/angular2.dev.js',
