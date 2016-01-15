@@ -17,6 +17,7 @@ module.exports = function(config) {
       'node_modules/angular2/bundles/angular2.dev.js',
       'node_modules/angular2/bundles/http.dev.js',
       'node_modules/angular2/bundles/testing.dev.js',
+      'node_modules/angular2/bundles/router.js',
       { pattern: 'dist/app/**/*.js', included: false, serve: true, watched: false },
       { pattern: 'dist/app/**/*.spec.js', included: true, serve: true, watched: true }
     ],
@@ -31,6 +32,14 @@ module.exports = function(config) {
             'angular2/src/facade/exceptions',
             'angular2/http/testing',
             'angular2/src/facade/collection',
+            'angular2/src/facade/async',
+            'angular2/src/platform/dom/dom_adapter',
+            'angular2/src/core/reflection/reflection',
+            'angular2/src/core/util/decorators',
+            'angular2/src/facade/promise',
+          ],
+          router: [
+            'angular2/router',
           ],
           http: [
             'angular2/http',
@@ -39,10 +48,13 @@ module.exports = function(config) {
             'rxjs/Rx',
             'rxjs/Observable',
             'rxjs/Subject',
+            'rxjs/subject/ReplaySubject',
+            'rxjs/operator/take',
           ]
         },
         map: {
           angular2: 'node_modules/angular2/bundles/angular2.dev.js',
+          router: 'node_modules/angular2/bundles/router.js',
           http: 'node_modules/angular2/bundles/http.dev.js',
           rxjs: 'node_modules/rxjs/bundles/Rx.js',
         },
@@ -80,7 +92,7 @@ module.exports = function(config) {
       // source files, that you wanna generate coverage for
       // do not include tests or libraries
       // (these files will be instrumented by Istanbul)
-      'dist/app/**/*.js': ['coverage']
+      'dist/app/**/!(*.spec).js': ['coverage']
     },
 
     // optionally, configure the reporter

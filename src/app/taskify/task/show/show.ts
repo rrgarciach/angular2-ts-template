@@ -1,7 +1,7 @@
 /// <reference path="../../../config/paths.ts" />
 /// <reference path="../task.service.ts" />
 
-import {Inject, Component, View} from 'angular2/core';
+import {Inject, Component, View, OnInit} from 'angular2/core';
 import {RouteConfig, RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
 import {PATHS} from '../../../config/paths';
 
@@ -15,13 +15,15 @@ import {TaskService} from '../task.service';
     directives: ROUTER_DIRECTIVES
 })
 
-export class TaskShow{
+export class TaskShow implements OnInit {
     private taskService: TaskService;
     public task:Object = {};
 
-    constructor(@Inject(TaskService) taskService:TaskService) {
+    constructor(@Inject(TaskService) taskService: TaskService) {
         this.taskService = taskService;
+    }
 
+    public ngOnInit() {
         this.taskService.getTask(1)
             .subscribe(result => {
                 this.task = result;
