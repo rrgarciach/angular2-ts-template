@@ -24,8 +24,26 @@ module.exports = function(config) {
     systemjs: {
       config: {
         defaultJSExtensions: true,
+        bundles: {
+          angular2: [
+            'angular2/core',
+            'angular2/src/facade/lang',
+            'angular2/src/facade/exceptions',
+            'angular2/http/testing',
+            'angular2/src/facade/collection'
+          ]
+        },
+        map: {
+          angular2: 'node_modules/angular2/bundles/angular2.dev.js'
+        },
+        /*packages: {
+          base: {
+            map: {
+              'angular2': 'node_modules/angular2/bundles/angular2.dev.js'
+            }
+          }
+        },*/
         paths: {
-          'angular2/*': 'node_modules/angular2/bundles/angular2.dev.js',
           'es6-module-loader': 'node_modules/es6-module-loader/dist/es6-module-loader.js',
           'systemjs': 'node_modules/systemjs/dist/system.js',
           'system-polyfills': 'node_modules/systemjs/dist/system-polyfills.js',
