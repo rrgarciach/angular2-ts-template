@@ -30,11 +30,21 @@ module.exports = function(config) {
             'angular2/src/facade/lang',
             'angular2/src/facade/exceptions',
             'angular2/http/testing',
-            'angular2/src/facade/collection'
+            'angular2/src/facade/collection',
+          ],
+          http: [
+            'angular2/http',
+          ],
+          rxjs: [
+            'rxjs/Rx',
+            'rxjs/Observable',
+            'rxjs/Subject',
           ]
         },
         map: {
-          angular2: 'node_modules/angular2/bundles/angular2.dev.js'
+          angular2: 'node_modules/angular2/bundles/angular2.dev.js',
+          http: 'node_modules/angular2/bundles/http.dev.js',
+          rxjs: 'node_modules/rxjs/bundles/Rx.js',
         },
         paths: {
           'es6-module-loader': 'node_modules/es6-module-loader/dist/es6-module-loader.js',
