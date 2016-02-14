@@ -4,7 +4,7 @@ import {Component, View} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 
 import {PATHS} from './config/paths';
-import {TaskIndex} from './taskify/task/index/index';
+import {TaskRoot} from './taskify/task/task.root';
 
 @Component({
   selector: 'app'
@@ -14,8 +14,7 @@ import {TaskIndex} from './taskify/task/index/index';
   directives: ROUTER_DIRECTIVES
 })
 @RouteConfig([
-  {path: '/tasks/...', useAsDefault: true, component: TaskIndex, as: 'TaskIndex'}, // <--- Default Route
-
+  {path: '/tasks/...', component: TaskRoot, as: 'Tasks', useAsDefault: true}, // <--- Default Route
 ])
 export class App {
 }
