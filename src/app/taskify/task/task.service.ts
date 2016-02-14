@@ -1,99 +1,120 @@
 /// <reference path="../services/api.service.ts" />
 /// <reference path="./task.model.ts" />
 
-import {Inject, provide} from 'angular2/core';
+import {Injectable, provide} from 'angular2/core';
 import {Headers} from 'angular2/http';
 import {Observable} from 'rxjs/Rx';
 
 import {APIService} from '../services/api.service';
-import {TaskModel} from './task.model'
+import {TaskModel} from './task.model';
 
+@Injectable()
 export class TaskService {
-    private apiService:APIService;
-    private urlPaths:Object = {
-        '/task/1': '/56954bda130000e909f9e2bc',
-        '/task': '/56944a961100001b1183a72b',
-    };
-    public tasks:Object[] = [];
+  public tasks: Object[] = [];
+  private apiService: APIService;
+  private urlPaths: Object = {
+    '/task/1': '/56954bda130000e909f9e2bc',
+    '/task': '/56944a961100001b1183a72b',
+  };
 
-    constructor(@Inject(APIService) apiService:APIService) {
-        this.apiService = apiService;
-    }
+  constructor(apiService: APIService) {
+    this.apiService = apiService;
+  }
 
-    public getTask(id:number):Observable<any> {
-        let authHeader = new Headers();
-        authHeader.append('Authorization', 'Bearer yourTokenGoesHere');
+  public getTask(id: number): Observable<any> {
+    let authHeader = new Headers();
+    authHeader.append('Authorization', 'Bearer yourTokenGoesHere');
 
-        return Observable.create(observer => {
-            this.apiService.get(this.urlPaths['/task/1'] + '/' + id,
-                {headers: authHeader})
-                .map(res => res.json())
-                .subscribe(() => {
-                    observer.next(this.tasks[id - 1]);
-                    observer.complete();
-                });
+    return Observable.create(observer => {
+      this.apiService
+        .get(
+          this.urlPaths['/task/1'] + '/' + id,
+          {headers: authHeader}
+        )
+        .map(res => res.json())
+        .subscribe(() => {
+          observer.next(this.tasks[id - 1]);
+          observer.complete();
         });
+    });
+  }
+
+  public getTasks(): Observable<any> {
+    if (this.tasks.length > 0) {
+      return Observable.create(observer => {
+        observer.next(this.tasks);
+        observer.complete();
+      });
     }
 
-    public getTasks():Observable<any> {
-        if (this.tasks.length > 0) {
-            return Observable.create(observer => {
-                observer.next(this.tasks);
-                observer.complete();
-            });
-        }
+    let authHeader = new Headers();
+    authHeader.append('Authorization', 'Bearer yourTokenGoesHere');
 
-        let authHeader = new Headers();
-        authHeader.append('Authorization', 'Bearer yourTokenGoesHere');
-
-        return Observable.create(observer => {
-            this.apiService.get(this.urlPaths['/task'],
-                {headers: authHeader})
-                .map(res => res.json())
-                .subscribe(tasks => {
-                    this.tasks = tasks;
-                    observer.next(this.tasks);
-                    observer.complete();
-                });
+    return Observable.create(observer => {
+      this.apiService
+        .get(
+          this.urlPaths['/task'],
+          {headers: authHeader}
+        )
+        .map(res => res.json())
+        .subscribe(tasks => {
+          this.tasks = tasks;
+          observer.next(this.tasks);
+          observer.complete();
         });
-    }
+    });
+  }
 
-    public createTask(task:TaskModel):Observable<any> {
-        let authHeader = new Headers();
-        authHeader.append('Authorization', 'Bearer yourTokenGoesHere');
+  public createTask(task: TaskModel): Observable<any> {
+    let authHeader = new Headers();
+    authHeader.append('Authorization', 'Bearer yourTokenGoesHere');
 
-        return Observable.create(observer => {
-            this.apiService.post(this.urlPaths['/task'],
-                task,
-                {headers: authHeader})
-                .map(res => res.json())
-                .subscribe(() => {
-                    task.id = this.tasks.length + 1;
-                    this.tasks.push(task);
-                    observer.next(task);
-                    observer.complete();
-                });
+    return Observable.create(observer => {
+      this.apiService
+        .post(
+          this.urlPaths['/task'],
+          task,
+          {headers: authHeader}
+        )
+        .map(res => res.json())
+        .subscribe(() => {
+          task.id = this.tasks.length + 1;
+          this.tasks.push(task);
+          observer.next(task);
+          observer.complete();
         });
-    }
+    });
+  }
 
-    public updateTask(task:TaskModel):Observable<any> {
-        let authHeader = new Headers();
-        authHeader.append('Authorization', 'Bearer yourTokenGoesHere');
+  public updateTask(task: TaskModel): Observable<any> {
+    let authHeader = new Headers();
+    authHeader.append('Authorization', 'Bearer yourTokenGoesHere');
 
-        return Observable.create(observer => {
-            this.apiService.put(this.urlPaths['/task'],
-                task,
-                {headers: authHeader})
-                .map(res => res.json())
-                .subscribe(() => {
-                    this.tasks[task.id - 1] = task;
-                    observer.next(task);
-                    observer.complete();
-                });
+    return Observable.create(observer => {
+      this.apiService
+        .put(
+          this.urlPaths['/task'],
+          task,
+          {headers: authHeader}
+        )
+        .map(res => res.json())
+        .subscribe(() => {
+          this.tasks[task.id - 1] = task;
+          observer.next(task);
+          observer.complete();
         });
-    }
+    });
+  }
 }
 
-export const TASK_SERVICE_PROVIDER:any[] = [
-    provide(TaskService, {useClass: TaskService, deps: [APIService]})
+/* istanbul ignore next */
+export const TASK_SERVICE_PROVIDERS = [
+  provide(TaskService, {
+    useFactory: (apiService: APIService) => {
+      return new TaskService(apiService);
+    },
+    deps: [APIService]
+  })
 ];
+
+

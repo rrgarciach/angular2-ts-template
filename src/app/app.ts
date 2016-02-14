@@ -1,19 +1,21 @@
 /// <reference path="./config/paths.ts" />
-/// <reference path="./taskify/routes.ts" />
 
-import {Component, View, Inject} from 'angular2/core';
-import {RouteConfig, RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
+import {Component, View} from 'angular2/core';
+import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 
 import {PATHS} from './config/paths';
-import {ROUTES} from './taskify/routes';
+import {TaskIndex} from './taskify/task/index/index';
 
 @Component({
-    selector: 'app'
+  selector: 'app'
 })
 @View({
-    templateUrl: PATHS.appPath + '/app.html',
-    directives: ROUTER_DIRECTIVES
+  templateUrl: PATHS.appPath + '/app.html',
+  directives: ROUTER_DIRECTIVES
 })
-@RouteConfig(ROUTES)
+@RouteConfig([
+  {path: '/tasks/...', useAsDefault: true, component: TaskIndex, as: 'TaskIndex'}, // <--- Default Route
+
+])
 export class App {
 }

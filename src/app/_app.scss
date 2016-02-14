@@ -1,0 +1,33 @@
+// Material Design theme color variables:
+$primary-color: #9E9E9E; //grey
+$secondary-color: #212121; //grey darken
+$accent-color: #00C853; //green accent
+$warn-color: #DD2C00; //deep-orange
+$background-color: #FFFFFF; //white
+$background-gray: #F2F2F2; //light grey
+$background-gradient-gray: radial-gradient(circle, #ffffff, #dcdcdc);
+
+// Override of materialize styles:
+body {
+  a {
+    color: $accent-color;
+  }
+  .primary {
+    background-color: $primary-color;
+    color: black;
+  }
+  .secondary {
+    background-color: $secondary-color;
+    color: white;
+  }
+}
+
+// Vendor mixin
+@mixin prefix($property, $value, $vendors: webkit moz ms o) {
+  @if $vendors {
+    @each $vendor in $vendors {
+      #{"-" + $vendor + "-" + $property}: #{$value};
+    }
+  }
+  #{$property}: #{$value};
+}

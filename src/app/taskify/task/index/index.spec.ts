@@ -2,18 +2,18 @@
 /// <reference path="../task.service.ts" />
 /// <reference path="../../services/api.service.ts" />
 
-import {Injector, provide} from 'angular2/core';
-import {BaseRequestOptions, Http} from 'angular2/http';
-import {MockBackend} from 'angular2/http/testing';
+//import {Injector, provide} from 'angular2/core';
+//import {BaseRequestOptions, Http} from 'angular2/http';
+//import {MockBackend} from 'angular2/http/testing';
 
-import {TaskIndex} from './index';
-import {TaskService} from '../task.service';
-import {APIService} from '../../services/api.service';
+//import {TaskIndex} from './index';
+//import {TaskService} from '../task.service';
+//import {APIService} from '../../services/api.service';
 
 describe('Task index component', () => {
 
-    let taskIndex:TaskIndex;
-    let taskService:TaskService;
+    //let taskIndex: TaskIndex;
+    //let taskService: TaskService;
 
     /*beforeEach(() => {
         let injector:Injector = Injector.resolveAndCreate([
@@ -34,15 +34,17 @@ describe('Task index component', () => {
         //taskIndex = new TaskIndex(taskService);
     });*/
 
-    xit('should have a TaskService instance', () => {
-        expect(taskService instanceof TaskService).toBeTruthy();
-    });
+    //xit('should have a TaskService instance', () => {
+        //expect(taskService instanceof TaskService).toBeTruthy();
+    //});
 
-    xit('should get tasks list', () => {
-        spyOn(taskService, 'getTasks');
-        expect(taskService.getTasks).toHaveBeenCalled();
-    });
+    //xit('should get tasks list', () => {
+    //    spyOn(taskService, 'getTasks');
+    //    expect(taskService.getTasks).toHaveBeenCalled();
+    //});
 
     xit('should display tasks list', () => {
+        // TODO
+        expect(true).toBeTruthy();
     });
 });

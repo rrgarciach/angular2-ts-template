@@ -11,6 +11,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      'node_modules/jquery/dist/jquery.min.js',
       'node_modules/cryptojs/lib/Crypto.js',
       'node_modules/reflect-metadata/Reflect.js',
       'node_modules/rxjs/bundles/Rx.js',
@@ -28,6 +29,7 @@ module.exports = function(config) {
         bundles: {
           angular2: [
             'angular2/core',
+            'angular2/common',
             'angular2/src/facade/lang',
             'angular2/src/facade/exceptions',
             'angular2/http/testing',
@@ -37,6 +39,7 @@ module.exports = function(config) {
             'angular2/src/core/reflection/reflection',
             'angular2/src/core/util/decorators',
             'angular2/src/facade/promise',
+            'angular2/src/http/backends/mock_backend.js'
           ],
           router: [
             'angular2/router',
@@ -57,6 +60,7 @@ module.exports = function(config) {
           router: 'node_modules/angular2/bundles/router.js',
           http: 'node_modules/angular2/bundles/http.dev.js',
           rxjs: 'node_modules/rxjs/bundles/Rx.js',
+          d3: 'node_modules/d3/d3.js',
         },
         paths: {
           'es6-module-loader': 'node_modules/es6-module-loader/dist/es6-module-loader.js',

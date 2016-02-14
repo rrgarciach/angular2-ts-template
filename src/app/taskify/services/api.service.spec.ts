@@ -9,11 +9,11 @@ import {APIService} from './api.service';
 
 describe('Api service', () => {
 
-    let apiService:APIService;
-    let http:Http;
+    let apiService: APIService;
+    let http: Http;
 
     beforeEach(() => {
-        let injector:Injector = Injector.resolveAndCreate([
+        let injector: Injector = Injector.resolveAndCreate([
             MockBackend,
             BaseRequestOptions,
             provide(Http, {
@@ -33,9 +33,9 @@ describe('Api service', () => {
     });
 
     it('should return an observable and modify api url on get method on success', () => {
-        let url:string = '/';
-        let expectedUrl:string = 'http://www.mocky.io/v2' + url;
-        let expectedOptions:any = undefined;
+        let url = '/';
+        let expectedUrl = 'http://www.mocky.io/v2' + url;
+        let expectedOptions: any = undefined;
 
         spyOn(http, 'get').and.returnValue(new Observable());
 

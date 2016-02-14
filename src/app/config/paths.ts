@@ -3,6 +3,6 @@
 // the build paths in this object.
 const APP_PATH = 'app';
 export const PATHS = {
-	appPath: APP_PATH,
-	taskifyPath: APP_PATH + '/taskify'
+  appPath: APP_PATH,
+  taskifyPath: APP_PATH + '/taskify',
 };

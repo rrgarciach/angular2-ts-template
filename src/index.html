@@ -1,28 +1,38 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Angular2 with tests</title>
-    <script src="lib/traceur-runtime.js"></script>
-    <script src="lib/angular2/angular2-polyfills.js"></script>
-    <script src="lib/system.js"></script>
-    <script src="lib/rxjs/Rx.js"></script>
-    <script src="lib/angular2/angular2.dev.js"></script>
-    <script src="lib/angular2/http.js"></script>
-    <script src="lib/angular2/router.js"></script>
-    <base href="/">
-    <script>
-        System.config({
-            packages: {
-                app: {
-                    format: 'cjs',
-                    defaultExtension: 'js'
-                }
-            }
-        });
-        System.import('app/bootstrap')
-                .then(null, console.error.bind(console));
-    </script>
+  <meta charset="UTF-8">
+  <title>Angular 2 with Typescript</title>
+  <!--Libraries dependencies-->
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/traceur-runtime.js"></script>
+  <script src="lib/angular2/angular2-polyfills.js"></script>
+  <script src="lib/system.js"></script>
+  <script src="lib/rxjs/Rx.js"></script>
+  <script src="lib/angular2/angular2.dev.js"></script>
+  <script src="lib/angular2/http.js"></script>
+  <script src="lib/angular2/router.js"></script>
+  <script src="lib/materialize/materialize.min.js"></script>
+  <!--Local CSS styles-->
+  <link rel="stylesheet" href="app/assets/css/bundle.css" type="text/css">
+  <!--Favicon-->
+  <link rel="shortcut icon" href="/favicon.ico?v=2">
+  <!--System config for Angular 2-->
+  <base href="/">
+  <script>
+    System.config({
+      packages: {
+        app: {
+          format: 'cjs',
+          defaultExtension: 'js'
+        },
+      }
+    });
+    System.import('app/bootstrap')
+      .then(null, console.error.bind(console));
+  </script>
 </head>
-    <body>
-        <app></app>
-    </body>
+<body>
+<app></app>
+</body>
 </html>

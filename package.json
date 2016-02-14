@@ -1,25 +1,33 @@
 {
-  "name": "angular-2-ts",
-  "version": "0.0.0",
+  "name": "Angular-2-Typescript",
+  "version": "0.1.0",
   "scripts": {
-    "build": "gulp build",
-    "start": "gulp"
+    "build": "gulp dist",
+    "start": "gulp",
+    "test": "gulp test"
   },
   "devDependencies": {
-    "angular2": "^2.0.0-beta.0",
+    "angular2": "2.0.0-beta.1",
     "cryptojs": "^2.5.3",
     "del": "^2.2.0",
     "es6-module-loader": "^0.17.9",
     "es6-promise": "^3.0.2",
     "es6-shim": "^0.33.3",
     "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-concat-css": "^2.2.0",
     "gulp-connect": "^2.2.0",
+    "gulp-minify-css": "^1.2.3",
     "gulp-open": "^1.0.0",
     "gulp-sass": "^2.0.4",
+    "gulp-shell": "^0.5.2",
     "gulp-sourcemaps": "^1.5.2",
+    "gulp-tslint": "^4.3.1",
     "gulp-typescript": "^2.7.6",
+    "gulp-uglify": "^1.5.1",
     "jasmine": "^2.3.2",
     "jasmine-core": "^2.3.4",
+    "jquery": "^2.2.0",
     "karma": "^0.13.9",
     "karma-chrome-launcher": "^0.2.0",
     "karma-coverage": "^0.5.3",
@@ -27,13 +35,16 @@
     "karma-spec-reporter": "0.0.23",
     "karma-systemjs": "^0.10.0",
     "merge-stream": "^1.0.0",
-    "reflect-metadata": "^0.1.2",
+    "reflect-metadata": "0.1.2",
     "run-sequence": "^1.1.0",
-    "rxjs": "^5.0.0-beta.0",
-    "systemjs": "^0.19.9",
+    "rxjs": "5.0.0-beta.0",
+    "systemjs": "0.19.9",
     "traceur": "0.0.95",
     "tsd": "^0.6.3",
-    "typescript": "^1.5.3",
-    "zone.js": "^0.5.10"
+    "tslint": "^3.3.0",
+    "typescript": "1.7.5",
+    "zone.js": "0.5.10"
+  },
+  "dependencies": {
   }
 }
