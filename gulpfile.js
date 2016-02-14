@@ -14,7 +14,7 @@
   const minifyCss = require('gulp-minify-css');
   const connect = require('gulp-connect');
   const open = require('gulp-open');
-  const shell = require('gulp-shell')
+  const drakov = require('./gulp/drakov');
   const KarmaServer = require('karma').Server;
 
   // not used yet
@@ -201,11 +201,6 @@
   gulp.task('watch-without-test', function () {
     gulp.watch(['src/**/**.ts', 'src/**/**.html', 'src/**/**.scss'], ['watch-rebuild-without-test']);
   });
-
-  // Run mock-server from API blueprint:
-  gulp.task('mock-server', shell.task([
-    './bin/api_server.sh'
-  ]));
 
   // Serve lite server
   gulp.task('serve', function () {

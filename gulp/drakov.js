@@ -1,22 +1,22 @@
 {
+  'use strict';
+
+  const gulp = require('gulp');
   const drakov = require('drakov');
 
   const argv = {
-    sourceFiles: 'path/to/files/**.md',
+    sourceFiles: './bin/blueprints/**.md',
     serverPort: 3000,
-    staticPaths: [
-      '/bin/blueprints'
-    ],
-    stealthmode: true,
     disableCORS: false,
     autoOptions: true,
-    header: 'Authorization',
-    delay: 1000,
+    //header: 'Authorization',
+    delay: 1000
   };
 
-
-  // Run mock-server from API blueprint:
-  gulp.task('mock-server', () => {
-    drakov.run(argv);
+// Run mock-server from API blueprint:
+  module.exports = gulp.task('mock-server', () => {
+    drakov.run(argv, () => {
+      console.log('running...');
+    });
   });
-}
+};
