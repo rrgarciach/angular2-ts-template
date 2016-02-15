@@ -2,6 +2,10 @@
   'use strict';
 
   const gulp = require('gulp');
+  require('./gulp/drakov');
+  require('./gulp/typescript');
+  require('./gulp/build');
+
   const runSequence = require('run-sequence');
   const merge = require('merge-stream');
   const del = require('del');
@@ -10,8 +14,6 @@
   const minifyCss = require('gulp-minify-css');
   const connect = require('gulp-connect');
   const open = require('gulp-open');
-  const drakov = require('./gulp/drakov');
-  const typescript = require('./gulp/typescript');
   const KarmaServer = require('karma').Server;
 
   // not used yet
@@ -92,47 +94,6 @@
     callback();
   });
 
-  // Copy dependencies to dist folder
-  gulp.task('dependencies', () => {
-    let rxjs = gulp.src([
-      'node_modules/rxjs/bundles/Rx.js',
-    ])
-      .pipe(gulp.dest('dist/lib/rxjs'));
-
-    let angular = gulp.src([
-      'node_modules/angular2/bundles/angular2.dev.js',
-      'node_modules/angular2/bundles/http.js',
-      'node_modules/angular2/bundles/angular2-polyfills.js',
-      'node_modules/angular2/bundles/router.js',
-    ])
-      .pipe(gulp.dest('dist/lib/angular2'));
-
-    let dependencies = gulp.src([
-      'node_modules/traceur/bin/traceur-runtime.js',
-      'node_modules/systemjs/dist/system.js',
-    ])
-      .pipe(gulp.dest('dist/lib'));
-
-    let jquery = gulp.src([
-        'node_modules/jquery/dist/jquery.min.js',
-      ])
-      .pipe(gulp.dest('dist/lib/jquery'));
-
-    return merge(
-      rxjs,
-      dependencies,
-      angular,
-      jquery
-    );
-  });
-
-  // Copy HTML to dist directory
-  gulp.task('assets', () => {
-    return gulp.src(['src/**/**.html', 'src/**/**.jpg', 'src/**/**.gif', 'src/**/**.png', 'src/**/**.ico'])
-      .pipe(gulp.dest('dist'))
-      .pipe(connect.reload());
-  });
-
   // Compiles SASS files to CSS
   gulp.task('sass', () => {
     return gulp.src('src/**/**.scss')
@@ -148,15 +109,14 @@
       .pipe(gulp.dest('dist'));
   });
 
+
+
   // Removes temporal CSS
   gulp.task('clean-css', ['css-concat'], () => {
     return del(['dist/temp']);
   });
 
-  // Removes dist directory.
-  gulp.task('clean', () => {
-    return del(['dist', 'coverage']);
-  });
+
 
   // Watch changes and rebuild
   gulp.task('watch', () => {
