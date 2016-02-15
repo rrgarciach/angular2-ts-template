@@ -16,7 +16,7 @@
 // Run mock-server from API blueprint:
   module.exports = gulp.task('mock-server', () => {
     drakov.run(argv, () => {
-      console.log('running...');
+      console.log('API Mock Server is up and running...');
     });
   });
 };
