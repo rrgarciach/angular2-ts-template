@@ -5,12 +5,12 @@
   const drakov = require('drakov');
 
   const argv = {
-    sourceFiles: './bin/blueprints/**.md',
-    serverPort: 3000,
+    sourceFiles: './api_blueprints/**.md',
+    serverPort: 3030,
     disableCORS: false,
     autoOptions: true,
     header: 'Authorization',
-    delay: 1000
+    delay: 500
   };
 
   // Run mock-server from API blueprint:
