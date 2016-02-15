@@ -2,7 +2,7 @@
   'use strict';
   /**
    * This is your main gulpfile
-   * The gulp tasks are splitted in several files inside gulp/ directory to avoid
+   * The gulp tasks are spliced in several files inside gulp/ directory to avoid
    * this file to become a monolithic script.
    */
 
