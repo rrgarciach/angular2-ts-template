@@ -5,16 +5,13 @@
   const runSequence = require('run-sequence');
   const merge = require('merge-stream');
   const del = require('del');
-  const ts = require('gulp-typescript');
-  const typescript = require('typescript');
-  const sourcemaps = require('gulp-sourcemaps');
-  const tslint = require("gulp-tslint");
   const sass = require('gulp-sass');
   const concatCss = require('gulp-concat-css');
   const minifyCss = require('gulp-minify-css');
   const connect = require('gulp-connect');
   const open = require('gulp-open');
   const drakov = require('./gulp/drakov');
+  const tsc = require('./gulp/typescript');
   const KarmaServer = require('karma').Server;
 
   // not used yet
@@ -29,7 +26,7 @@
   };
 
   // Main task
-  gulp.task('default', function () {
+  gulp.task('default', () => {
     runSequence(
       'clean',
       'tslint',
@@ -45,7 +42,7 @@
   });
 
   // Main build task
-  gulp.task('dist', function() {
+  gulp.task('dist', () => {
     runSequence(
       'clean',
       'tslint',
@@ -58,7 +55,7 @@
   });
 
   // Main task for development stack
-  gulp.task('test', function() {
+  gulp.task('test', () => {
     runSequence(
       'clean',
       'tslint',
@@ -71,7 +68,7 @@
 
   // default task starts watcher. in order not to start it each change
   // watcher will run the task bellow
-  gulp.task('watch-rebuild', function (callback) {
+  gulp.task('watch-rebuild', callback => {
     runSequence(
       'clean',
       'tslint',
@@ -85,7 +82,7 @@
 
   // default task starts watcher. in order not to start it each change
   // watcher will run the task bellow without test
-  gulp.task('watch-rebuild-without-test', function (callback) {
+  gulp.task('watch-rebuild-without-test', callback => {
     runSequence(
       'clean',
       'ts',
@@ -96,7 +93,7 @@
   });
 
   // Copy dependencies to dist folder
-  gulp.task('dependencies', function () {
+  gulp.task('dependencies', () => {
     let rxjs = gulp.src([
       'node_modules/rxjs/bundles/Rx.js',
     ])
@@ -129,39 +126,15 @@
     );
   });
 
-  // TypeScript compilation to dist directory
-  gulp.task('ts', function () {
-    let tsProject = ts.createProject('tsconfig-dev.json', {
-      typescript: typescript
-    });
-
-    return gulp.src(['src/**/**.ts'])
-      .pipe(sourcemaps.init())
-      .pipe(ts(tsProject))
-      .pipe(sourcemaps.write('./', { includeContent: true, sourceRoot: '/src' }))
-      .pipe(gulp.dest('dist'));
-  });
-
-  // Compiles typescript for production environment removing the source maps used only in development mode
-  gulp.task('ts-prod', function () {
-    let tsProject = ts.createProject('tsconfig.json', {
-      typescript: typescript
-    });
-
-    return gulp.src(['src/**/**.ts'])
-      .pipe(ts(tsProject))
-      .pipe(gulp.dest('dist'));
-  });
-
   // Copy HTML to dist directory
-  gulp.task('assets', function () {
+  gulp.task('assets', () => {
     return gulp.src(['src/**/**.html', 'src/**/**.jpg', 'src/**/**.gif', 'src/**/**.png', 'src/**/**.ico'])
       .pipe(gulp.dest('dist'))
       .pipe(connect.reload());
   });
 
   // Compiles SASS files to CSS
-  gulp.task('sass', function () {
+  gulp.task('sass', () => {
     return gulp.src('src/**/**.scss')
       .pipe(sass().on('error', sass.logError))
       .pipe(gulp.dest('dist/temp'));
@@ -176,50 +149,43 @@
   });
 
   // Removes temporal CSS
-  gulp.task('clean-css', ['css-concat'], function () {
+  gulp.task('clean-css', ['css-concat'], () => {
     return del(['dist/temp']);
   });
 
-  // Look at all ts file to be sure all follows the same code standard defined at tslint.json file
-  gulp.task('tslint', function () {
-    return gulp.src('src/app/**/*.ts')
-      .pipe(tslint())
-      .pipe(tslint.report('verbose'));
-  });
-
   // Removes dist directory.
-  gulp.task('clean', function () {
+  gulp.task('clean', () => {
     return del(['dist', 'coverage']);
   });
 
   // Watch changes and rebuild
-  gulp.task('watch', function () {
+  gulp.task('watch', () => {
     gulp.watch(['src/**/**.ts', 'src/**/**.html', 'src/**/**.scss'], ['watch-rebuild']);
   });
 
   // Watch changes and rebuild without test
-  gulp.task('watch-without-test', function () {
+  gulp.task('watch-without-test', () => {
     gulp.watch(['src/**/**.ts', 'src/**/**.html', 'src/**/**.scss'], ['watch-rebuild-without-test']);
   });
 
   // Serve lite server
-  gulp.task('serve', function () {
+  gulp.task('serve', () => {
     connect.server(serverOptions);
   });
 
   // Opens lite server in browser
-  gulp.task('browser', function () {
+  gulp.task('browser', () => {
     gulp.src('index.html')
       .pipe(open({ uri: 'http://' + serverOptions.hostname +':' + serverOptions.port }));
   });
 
   // Removes all TypeScript test files
-  gulp.task('clean-test', function () {
+  gulp.task('clean-test', () => {
     return del(['dist/**/**.spec.js', 'dist/**/**.spec.js.map']);
   });
 
   // Run TypeScript tests
-  gulp.task('run-test', function (done) {
+  gulp.task('run-test', done => {
     new KarmaServer({
       configFile: __dirname + '/karma.conf.js'
     }, done).start();
