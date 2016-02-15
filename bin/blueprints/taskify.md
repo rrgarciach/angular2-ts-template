@@ -26,11 +26,40 @@ Retrieve a collection of Tasks
                 }
             ]
 
+
+### List all Tasks [POST]
+Create a Task
+
++ Request (application/json)
+
+    + Attributes (object)
+
++ Response 200
+
+    + Body
+
+            [
+                {
+                    "id": 1, 
+                        "name": "Buy some goreceries"
+                },
+                {
+                    "id": 2, 
+                    "name": "Dinner with Katty"
+                }
+            ]
+                
+
 ## Task Collection [/tasks/{id}]
 A single Tasks object with all its details
 
-### Get Login page [GET]
+### Get single Task [GET]
 Retrieve a single Task by ID
+
++ Request
+
+    + Parameters
+        + id (number)
 
 + Response 200 (application/json)
 
@@ -40,3 +69,30 @@ Retrieve a single Task by ID
             "id": 1, 
             "name": "Buy some goreceries"
             }
+
+### Modify single Task [PUT]
+Edit a single Task by ID
+
++ Request (application/json)
+
+    + Attributes
+        + id (number)
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+            "id": 1, 
+            "name": "Buy some goreceries"
+            }
+            
+### Remove single Task [DELETE]
+Delete a single Task by ID
+
++ Request
+
+    + Attributes
+        + id (number)
+
++ Response 204
