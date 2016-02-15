@@ -49,8 +49,15 @@ Create a Task
                 }
             ]
                 
+### Task Collection pre flight [OPTIONS]
 
-## Task Collection [/tasks/{id}]
++ Response 200
+
+    + Headers
+
+            Allow: HEAD,GET,PUT,DELETE,OPTIONS
+
+## Tasks [/tasks/{id}]
 A single Tasks object with all its details
 
 ### Get single Task [GET]
@@ -96,3 +103,11 @@ Delete a single Task by ID
         + id (number)
 
 + Response 204
+
+### Tasks pre flight [OPTIONS]
+
++ Response 200
+
+    + Headers
+
+            Allow: HEAD,GET,PUT,DELETE,OPTIONS

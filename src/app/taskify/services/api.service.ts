@@ -5,7 +5,7 @@ import {Injectable} from 'angular2/core';
 
 @Injectable()
 export class APIService {
-  private static URL: string = 'http://www.mocky.io/v2';
+  private static URL: string = 'http://localhost:3030';
   private http: Http;
 
   constructor(http: Http) {

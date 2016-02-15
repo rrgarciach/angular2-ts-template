@@ -34,7 +34,7 @@ describe('Api service', () => {
 
     it('should return an observable and modify api url on get method on success', () => {
         let url = '/';
-        let expectedUrl = 'http://www.mocky.io/v2' + url;
+        let expectedUrl = 'http://localhost:3030' + url;
         let expectedOptions: any = undefined;
 
         spyOn(http, 'get').and.returnValue(new Observable());
