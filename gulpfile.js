@@ -11,7 +11,7 @@
   const connect = require('gulp-connect');
   const open = require('gulp-open');
   const drakov = require('./gulp/drakov');
-  const tsc = require('./gulp/typescript');
+  const typescript = require('./gulp/typescript');
   const KarmaServer = require('karma').Server;
 
   // not used yet
@@ -190,4 +190,5 @@
       configFile: __dirname + '/karma.conf.js'
     }, done).start();
   });
+
 })();
