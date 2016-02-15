@@ -40,5 +40,4 @@
     gulp.watch(['src/**/**.ts', 'src/**/**.html', 'src/**/**.scss'], ['watch-rebuild-without-test']);
   });
 
-
 })();

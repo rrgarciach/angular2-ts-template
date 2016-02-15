@@ -5,6 +5,20 @@
   const connect = require('gulp-connect');
   const del = require('del');
   const merge = require('merge-stream');
+  const runSequence = require('run-sequence');
+
+  // Main build task
+  gulp.task('dist', () => {
+    runSequence(
+      'clean',
+      'tslint',
+      'ts-prod',
+      'assets',
+      'clean-css',
+      'dependencies',
+      'run-test',
+      'clean-test');
+  });
 
   // Removes dist directory.
   gulp.task('clean', () => {
