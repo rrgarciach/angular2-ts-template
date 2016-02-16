@@ -12,10 +12,6 @@ import {TaskModel} from './task.model';
 export class TaskService {
   public tasks: Object[] = [];
   private apiService: APIService;
-  private urlPaths: Object = {
-    '/task/1': '/56954bda130000e909f9e2bc',
-    '/task': '/56944a961100001b1183a72b',
-  };
 
   constructor(apiService: APIService) {
     this.apiService = apiService;
@@ -28,7 +24,7 @@ export class TaskService {
     return Observable.create(observer => {
       this.apiService
         .get(
-          this.urlPaths['/task/1'] + '/' + id,
+          '/tasks/' + id,
           {headers: authHeader}
         )
         .map(res => res.json())
@@ -53,7 +49,7 @@ export class TaskService {
     return Observable.create(observer => {
       this.apiService
         .get(
-          this.urlPaths['/task'],
+          '/tasks',
           {headers: authHeader}
         )
         .map(res => res.json())
@@ -66,15 +62,18 @@ export class TaskService {
   }
 
   public createTask(task: TaskModel): Observable<any> {
-    let authHeader = new Headers();
-    authHeader.append('Authorization', 'Bearer yourTokenGoesHere');
-
     return Observable.create(observer => {
+      let headers = new Headers();
+      headers.append('Authorization', 'Bearer yourTokenGoesHere');
+      headers.append('Content-Type', 'application/json');
+
       this.apiService
         .post(
-          this.urlPaths['/task'],
-          task,
-          {headers: authHeader}
+          '/tasks',
+          TaskModel.serialize(task),
+          {headers: new Headers({
+            'Content-Type': 'application/json'
+          })}
         )
         .map(res => res.json())
         .subscribe(() => {
@@ -87,15 +86,20 @@ export class TaskService {
   }
 
   public updateTask(task: TaskModel): Observable<any> {
-    let authHeader = new Headers();
-    authHeader.append('Authorization', 'Bearer yourTokenGoesHere');
-
     return Observable.create(observer => {
+      let headers = new Headers();
+      headers.append('Authorization', 'Bearer yourTokenGoesHere');
+      headers.append('Content-Type', 'application/json');
+
       this.apiService
         .put(
-          this.urlPaths['/task'],
-          task,
-          {headers: authHeader}
+          '/tasks/' + task.id,
+          TaskModel.serialize(task),
+          {
+            headers: new Headers({
+              'Content-Type': 'application/json'
+            })
+          }
         )
         .map(res => res.json())
         .subscribe(() => {

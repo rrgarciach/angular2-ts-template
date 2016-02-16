@@ -2,6 +2,7 @@ import {provide} from 'angular2/core';
 import {Http, RequestOptionsArgs} from 'angular2/http';
 import {Observable} from 'rxjs/Rx';
 import {Injectable} from 'angular2/core';
+import {Json} from 'angular2/src/facade/lang';
 
 @Injectable()
 export class APIService {
@@ -21,6 +22,7 @@ export class APIService {
   }
 
   public post(url: string, data: Object, options?: RequestOptionsArgs): Observable<any> {
+    console.log(Json.stringify(data));
     let _data: string = JSON.stringify(data);
     let _url: string = APIService.URL + url;
     return this.http.post(_url, _data, options);

@@ -10,6 +10,7 @@
     "angular2": "2.0.0-beta.1",
     "cryptojs": "^2.5.3",
     "del": "^2.2.0",
+    "drakov": "^0.2.1",
     "es6-module-loader": "^0.17.9",
     "es6-promise": "^3.0.2",
     "es6-shim": "^0.33.3",
@@ -45,6 +46,5 @@
     "typescript": "1.7.5",
     "zone.js": "0.5.10"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }

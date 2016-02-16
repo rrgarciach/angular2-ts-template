@@ -27,7 +27,7 @@ Retrieve a collection of Tasks
             ]
 
 
-### List all Tasks [POST]
+### Create a new task [POST]
 Create a Task
 
 + Request (application/json)
@@ -38,24 +38,18 @@ Create a Task
 
     + Body
 
-            [
-                {
-                    "id": 1, 
-                        "name": "Buy some goreceries"
-                },
-                {
-                    "id": 2, 
-                    "name": "Dinner with Katty"
-                }
-            ]
-                
+            {
+                "id": 1,
+                    "name": "Buy some goreceries"
+            },
+
 ### Task Collection pre flight [OPTIONS]
 
 + Response 200
 
     + Headers
 
-            Allow: HEAD,GET,PUT,DELETE,OPTIONS
+            Allow: HEAD,GET,PUT,DELETE,POST,OPTIONS,PATCH
 
 ## Tasks [/tasks/{id}]
 A single Tasks object with all its details
@@ -110,4 +104,4 @@ Delete a single Task by ID
 
     + Headers
 
-            Allow: HEAD,GET,PUT,DELETE,OPTIONS
+            Allow: HEAD,GET,PUT,DELETE,OPTIONS,POST,PATCH

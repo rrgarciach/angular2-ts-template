@@ -17,4 +17,11 @@ export class TaskModel {
   public set id(value: number) {
     this._id = value;
   }
+
+  public static serialize(task) {
+    return {
+      id: task.id,
+      name: task.name
+    };
+  }
 }
