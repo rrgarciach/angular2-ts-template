@@ -40,16 +40,8 @@ Create a Task
 
             {
                 "id": 1,
-                    "name": "Buy some goreceries"
-            },
-
-### Task Collection pre flight [OPTIONS]
-
-+ Response 200
-
-    + Headers
-
-            Allow: HEAD,GET,PUT,DELETE,POST,OPTIONS,PATCH
+                "name": "Buy some goreceries"
+            }
 
 ## Tasks [/tasks/{id}]
 A single Tasks object with all its details
@@ -97,11 +89,3 @@ Delete a single Task by ID
         + id (number)
 
 + Response 204
-
-### Tasks pre flight [OPTIONS]
-
-+ Response 200
-
-    + Headers
-
-            Allow: HEAD,GET,PUT,DELETE,OPTIONS,POST,PATCH
